@@ -14,10 +14,12 @@ const PORT=process.env.PORT ||3000;
 await connectDb() 
 
 app.use(express.json())
-app.use(cors({
-  origin:"https://starresume.vercel.app/",
-  credentials:true
-}))
+// app.use(cors({
+//   origin:"https://starresume.vercel.app",
+//   credentials:true
+// }))
+
+app.use(cors())
 
 app.get('/',(req,res)=>{
   res.send("server is live...")
