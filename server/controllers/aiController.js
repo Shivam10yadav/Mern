@@ -69,79 +69,103 @@ export const enhanceJobDescription = async (req, res) => {
 
 export const uploadResume = async (req, res) => {
   try {
+    console.log('=== Upload Resume Started ===')
+    
     const { resumeText, title } = req.body;
     const userId = req.userId;
 
+    console.log('User ID:', userId)
+    console.log('Title:', title)
+    console.log('Resume Text Length:', resumeText?.length)
+    console.log('Resume Text Preview:', resumeText?.substring(0, 200))
+
     if (!resumeText) {
+      console.log('ERROR: Missing resumeText')
       return res.status(400).json({ message: "Missing required fields" });
     }
-    const systemPrompt =
-      "you are an expert AI Agent to extract data from resume";
 
-    const userPrompt = `extract data from this resume: ${resumeText}
+    if (!userId) {
+      console.log('ERROR: Missing userId')
+      return res.status(401).json({ message: "Unauthorized" });
+    }
 
-Provide data in the following JSON format with no additional text before or after:
+    console.log('=== Checking Gemini Config ===')
+    console.log('API Key exists:', !!process.env.OPENAI_API_KEY)
+    console.log('API Key prefix:', process.env.OPENAI_API_KEY?.substring(0, 8))
+    console.log('Model:', process.env.OPEN_AI_MODEL)
+
+    console.log('Calling Gemini API...')
+
+    const model = ai.getGenerativeModel({ 
+      model: process.env.OPEN_AI_MODEL,
+      generationConfig: { 
+        responseMimeType: "application/json" 
+      }
+    });
+
+    const prompt = `You are an expert AI Agent to extract data from resume.
+
+Extract data from this resume: ${resumeText}
+
+Provide data in the following JSON format with no additional text:
 
 {
- professional_summary: { type: String, default: "" },
-
-  skills: [{ type: String }],
-
-  personal_info: {
-    image: { type: String, default: "" },
-    full_name: { type: String, default: "" },
-    profession: { type: String, default: "" },
-    email: { type: String, default: "" },
-    phone: { type: String, default: "" },
-    location: { type: String, default: "" },
-    linkedin: { type: String, default: "" },
-    website: { type: String, default: "" },
+  "professional_summary": "",
+  "skills": [],
+  "personal_info": {
+    "image": "",
+    "full_name": "",
+    "profession": "",
+    "email": "",
+    "phone": "",
+    "location": "",
+    "linkedin": "",
+    "website": ""
   },
-  experience: [
+  "experience": [
     {
-      company: { type: String },
-      position: { type: String },
-      start_date: { type: String },
-      end_date: { type: String },
-      description: { type: String },
-      is_current: { type: Boolean },
-    },
+      "company": "",
+      "position": "",
+      "start_date": "",
+      "end_date": "",
+      "description": "",
+      "is_current": false
+    }
   ],
-  project: [
+  "project": [
     {
-      name: { type: String },
-      type: { type: String },
-      description: { type: String },
-    },
+      "name": "",
+      "type": "",
+      "description": ""
+    }
   ],
-  education: [
+  "education": [
     {
-      institution: { type: String },
-      degree: { type: String },
-      field: { type: String },
-      graduation_date: { type: String },
-      gpa: { type: String },
-    },
-  ],
-}
-`;
+      "institution": "",
+      "degree": "",
+      "field": "",
+      "graduation_date": "",
+      "gpa": ""
+    }
+  ]
+}`;
 
-    const response = await ai.chat.completions.create({
-      model: process.env.OPEN_AI_MODEL,
-      messages: [
-        { role: "system", content: systemPrompt },
-        {
-          role: "user",
-          content: userPrompt,
-        },
-      ],
-      response_format: { type: "json_object" },
-    });
-    const extractedData = response.choices[0].message.content;
+    const result = await model.generateContent(prompt);
+    const extractedData = result.response.text();
     const parsedData = JSON.parse(extractedData);
+    
+    console.log('Creating resume in database...')
     const newResume = await Resume.create({ userId, title, ...parsedData });
-    res.json({ resumeId: newResume._id });
+    
+    console.log('Resume created successfully:', newResume._id)
+    console.log('=== Upload Resume Completed ===')
+    
+    res.json({ resume: { _id: newResume._id } });
   } catch (error) {
+    console.error('=== Upload Resume ERROR ===')
+    console.error('Error Name:', error.name)
+    console.error('Error Message:', error.message)
+    console.error('Error Stack:', error.stack)
     return res.status(400).json({ message: error.message });
   }
 };

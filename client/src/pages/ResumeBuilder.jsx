@@ -42,7 +42,7 @@ const ResumeBuilder = () => {
     project: [],
     skills: [],
     template: "classic",
-    accecnt_color: "#3b82F6",
+    accent_color: "#000000",
     public: false,
   });
   const [activesectionindex, setactivesectionindex] = useState(0);
@@ -159,6 +159,13 @@ const saveResume = async () => {
   }, [resumeid]); // Fix: Add resumeid as dependency
 const changeResumeVisibility = async () => {
   try {
+    const token = localStorage.getItem('token');
+    
+    if (!token) {
+      toast.error('Please login to continue');
+      return;
+    }
+
     const formData = new FormData();
     formData.append("resumeid", resumeid);
     formData.append(
@@ -166,20 +173,24 @@ const changeResumeVisibility = async () => {
       JSON.stringify({ public: !resumedata.public })
     );
 
-    const { data } = await api.put("/api/resume/update", formData, {
+    const { data } = await api.put("/api/resumes/update", formData, {  // ✅ Fixed endpoint
       headers: {
         authorization: `Bearer ${token}`,
       },
     });
 
     setresumedata({ ...resumedata, public: !resumedata.public });
-    toast.success(data.message);
+   toast.success(
+  resumedata.public 
+    ? "Resume is now private" 
+    : "Resume is now public"
+);
+    
   } catch (error) {
     console.error("Error changing visibility:", error);
     toast.error(error?.response?.data?.message || "Failed to change visibility");
   }
 };
-
 
 
 
@@ -237,11 +248,11 @@ const changeResumeVisibility = async () => {
                     }
                   />
                   <ColorPicker
-                    selectedColor={resumedata.accecnt_color}
+                    selectedColor={resumedata.accent_color}
                     onChange={(color) =>
                       setresumedata((prev) => ({
                         ...prev,
-                        accecnt_color: color,
+                        accent_color: color,
                       }))
                     }
                   />
@@ -397,7 +408,7 @@ const changeResumeVisibility = async () => {
             <ResumePreview
               data={resumedata}
               template={resumedata.template}
-              accentColor={resumedata.accecnt_color}
+              accentColor={resumedata.accent_color}
             />
           </div>
         </div>

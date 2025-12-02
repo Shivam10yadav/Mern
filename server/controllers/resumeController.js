@@ -69,13 +69,29 @@ export const getResumeById = async (req, res) => {
 export const getPublicResumeById = async (req, res) => {
   try {
     const { resumeId } = req.params;
-    const resume = await Resume.findOne({ public: true, _id: resumeId });
+
+    // Find resume that is public
+    const resume = await Resume.findOne({ 
+      _id: resumeId, 
+      public: true  // ✅ Only return if resume is public
+    });
+
     if (!resume) {
-      return res.status(404).json({ message: "Resume not found" });
+      return res.status(404).json({ message: "Resume not found or not public" });
     }
-    return res.status(200).json({ resume });
+
+    // Remove unnecessary fields
+    const resumeData = resume.toObject();
+    delete resumeData.__v;
+    delete resumeData.createdAt;
+    delete resumeData.updatedAt;
+    delete resumeData.userId;  // Don't expose user ID
+
+    return res.status(200).json({ resume: resumeData });
+    
   } catch (error) {
-    return res.status(400).json({ message: error.message });
+    console.error("Get Public Resume Error:", error);
+    return res.status(500).json({ message: error.message });
   }
 };
 

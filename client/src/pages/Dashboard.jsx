@@ -76,21 +76,42 @@ const Dashboard = () => {
     event.preventDefault()
     setIsLoading(true)
     try {
-      const resumeText=await pdfToText(resume)
-      const {data} = await api.post('/api/ai/upload-resume', {title,resumeText}, {
-      headers: {
-        authorization: `Bearer ${token}`
+      console.log('Starting PDF conversion...')
+      console.log('Resume file:', resume)
+      
+      const resumeText = await pdfToText(resume)
+      
+      console.log('Resume Text Length:', resumeText?.length)
+      console.log('Resume Text Preview:', resumeText?.substring(0, 200))
+      console.log('Title:', title)
+      
+      if (!resumeText || resumeText.trim() === '') {
+        toast.error('Failed to extract text from PDF')
+        setIsLoading(false)
+        return
       }
-    })
-    settitle('')
-    setresume(null)
-    setshowuploadresume(false)
-    navigate(`/app/builder/${data.resume._id}`)
+      
+      console.log('Sending request to API...')
+      const {data} = await api.post('/api/ai/upload-resume', {title, resumeText}, {
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      
+      console.log('API Response:', data)
+      
+      settitle('')
+      setresume(null)
+      setshowuploadresume(false)
+      navigate(`/app/builder/${data.resume._id}`)
+      setIsLoading(false)
     } catch (error) {
-      toast.error(error?.response?.data?.message || error.message) 
+      console.error('Upload Error:', error)
+      console.error('Error Response:', error?.response?.data)
+      toast.error(error?.response?.data?.message || error.message)
+      setIsLoading(false)
     }
- setIsLoading(false)    
-  }
+}
 
   const edittitle = async (event) => {
     try {

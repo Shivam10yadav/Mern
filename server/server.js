@@ -15,7 +15,7 @@ await connectDb()
 
 app.use(express.json())
 // app.use(cors({
-//   origin:"https://starresume.vercel.app",
+//   origin:["http://localhost:3000","https://easy-resume-lph1.onrender.com"],
 //   credentials:true
 // }))
 

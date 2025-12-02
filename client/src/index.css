@@ -37,3 +37,9 @@
     width: 100%;
   }
 }
+
+
+/* Dark mode support */
+.dark {
+  color-scheme: dark;
+}
