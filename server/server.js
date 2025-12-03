@@ -14,12 +14,18 @@ const PORT=process.env.PORT ||3000;
 await connectDb() 
 
 app.use(express.json())
-// app.use(cors({
-//   origin:["http://localhost:3000","https://easy-resume-lph1.onrender.com"],
-//   credentials:true
-// }))
+import cors from 'cors';
 
-app.use(cors())
+app.use(cors({
+  origin: [
+    'http://localhost:5173',  // Local development
+    'https://resume-builder-frontend-9fjz.onrender.com'  // ✅ Add your frontend URL
+  ],
+  credentials: true,
+  allowedHeaders: ['Content-Type', 'authorization']
+}));
+
+
 
 app.get('/',(req,res)=>{
   res.send("server is live...")
