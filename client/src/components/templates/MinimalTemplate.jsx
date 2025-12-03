@@ -1,5 +1,6 @@
-
 const MinimalTemplate = ({ data, accentColor }) => {
+     console.log('🎨 MinimalTemplate - Accent Color:', accentColor);
+    console.log('🎨 MinimalTemplate - Type:', typeof accentColor);
     const formatDate = (dateStr) => {
         if (!dateStr) return "";
         const [year, month] = dateStr.split("-");
@@ -33,7 +34,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Professional Summary */}
             {data.professional_summary && (
                 <section className="mb-10">
-                    <p className=" text-gray-700">
+                    <p className="text-gray-700">
                         {data.professional_summary}
                     </p>
                 </section>
@@ -42,7 +43,9 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Experience */}
             {data.experience && data.experience.length > 0 && (
                 <section className="mb-10">
-                    <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                    <h2 
+                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        style={{ color: accentColor || '#4F46E5' }}>
                         Experience
                     </h2>
 
@@ -70,14 +73,16 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Projects */}
             {data.project && data.project.length > 0 && (
                 <section className="mb-10">
-                    <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                    <h2 
+                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        style={{ color: accentColor || '#4F46E5' }}>
                         Projects
                     </h2>
 
                     <div className="space-y-4">
                         {data.project.map((proj, index) => (
                             <div key={index} className="flex flex-col gap-2 justify-between items-baseline">
-                                <h3 className="text-lg font-medium ">{proj.name}</h3>
+                                <h3 className="text-lg font-medium">{proj.name}</h3>
                                 <p className="text-gray-600">{proj.description}</p>
                             </div>
                         ))}
@@ -88,7 +93,9 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Education */}
             {data.education && data.education.length > 0 && (
                 <section className="mb-10">
-                    <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                    <h2 
+                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        style={{ color: accentColor || '#4F46E5' }}>
                         Education
                     </h2>
 
@@ -114,7 +121,9 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Skills */}
             {data.skills && data.skills.length > 0 && (
                 <section>
-                    <h2 className="text-sm uppercase tracking-widest mb-6 font-medium" style={{ color: accentColor }}>
+                    <h2 
+                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        style={{ color: accentColor || '#4F46E5' }}>
                         Skills
                     </h2>
 
