@@ -1,4 +1,5 @@
 import React from 'react'
+import { Building2, Linkedin,  X , Instagram,  Github } from 'lucide-react'
 
 const Contactus = () => {
   return (
@@ -7,9 +8,9 @@ const Contactus = () => {
             <h1 className="text-4xl font-bold text-left mt-4">
                 We'd love to Hear From You.
             </h1>
-            <p className="text-left mt-4">
-                Or just reach out manually to
-                <a href="mailto:contact@prebuiltui.com" className="text-green-600 hover:underline">contact@prebuiltui.com</a>
+            <p className="text-left mt-4 ">
+                Or just reach out manually at
+                <a href="mailto:shivam10yadav05@gmail.com" className="text-green-600 hover:underline">shivam10yadav05@gmail.com</a>
             </p>
             <div className="grid md:grid-cols-3 mt-16">
                 <div>
@@ -22,22 +23,62 @@ const Contactus = () => {
                     <p className="text-lg font-bold mt-2">Email Support</p>
                     <p className="text-gray-500 mt-1 mb-4">Our team can respond in real time.</p>
                     <a href="contact@prebuiltui.com" className="text-green-600 font-semibold">
-                        contact@prebuiltui.com
+                        shivam10yadav05@gmail.com
                     </a>
                 </div>
-                <div>
-                    <svg className="text-green-500 bg-green-500/20 p-2.5 aspect-square rounded-full size-10" width="24"
-                        height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M22.875 19.125H21.75V9.309a1.125 1.125 0 0 0-.375-2.184h-3.75V4.809a1.125 1.125 0 0 0-.375-2.184H3.75a1.125 1.125 0 0 0-.375 2.184v14.316H2.25a1.125 1.125 0 1 0 0 2.25h20.625a1.125 1.125 0 1 0 0-2.25M19.5 9.375v9.75h-1.875v-9.75zm-13.875-4.5h9.75v14.25h-1.5V15a1.125 1.125 0 0 0-1.125-1.125h-4.5A1.125 1.125 0 0 0 7.125 15v4.125h-1.5zm6 14.25h-2.25v-3h2.25zM6.75 7.5a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 0 1 0 2.25h-.75A1.125 1.125 0 0 1 6.75 7.5m4.5 0a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 0 1 0 2.25h-.75A1.125 1.125 0 0 1 11.25 7.5m-4.5 3.75a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 1 1 0 2.25h-.75A1.125 1.125 0 0 1 6.75 11.25m4.5 0a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 1 1 0 2.25h-.75a1.125 1.125 0 0 1-1.125-1.125"
-                            fill="currentColor" />
-                    </svg>
-                    <p className="text-lg font-bold mt-2">Visit Our Office</p>
-                    <p className="text-gray-500 mt-1 mb-4">Visit our location in real life.</p>
-                    <span className="text-green-600 font-semibold">
-                        221b Elementary Avenue, NY
-                    </span>
-                </div>
+               <div>
+    <svg className="text-green-500 bg-green-500/20 p-2.5 aspect-square rounded-full size-10" width="24"
+        height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+            d="M22.875 19.125H21.75V9.309a1.125 1.125 0 0 0-.375-2.184h-3.75V4.809a1.125 1.125 0 0 0-.375-2.184H3.75a1.125 1.125 0 0 0-.375 2.184v14.316H2.25a1.125 1.125 0 1 0 0 2.25h20.625a1.125 1.125 0 1 0 0-2.25M19.5 9.375v9.75h-1.875v-9.75zm-13.875-4.5h9.75v14.25h-1.5V15a1.125 1.125 0 0 0-1.125-1.125h-4.5A1.125 1.125 0 0 0 7.125 15v4.125h-1.5zm6 14.25h-2.25v-3h2.25zM6.75 7.5a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 0 1 0 2.25h-.75A1.125 1.125 0 0 1 6.75 7.5m4.5 0a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 0 1 0 2.25h-.75A1.125 1.125 0 0 1 11.25 7.5m-4.5 3.75a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 1 1 0 2.25h-.75A1.125 1.125 0 0 1 6.75 11.25m4.5 0a1.125 1.125 0 0 1 1.125-1.125h.75a1.125 1.125 0 1 1 0 2.25h-.75a1.125 1.125 0 0 1-1.125-1.125"
+            fill="currentColor" />
+    </svg>
+    <p className="text-lg font-bold mt-2">Social Links</p>
+    <p className="text-gray-500 mt-1 mb-4">Reach us through social media</p>
+    
+    <div className="flex gap-5 items-center justify-start flex-wrap">
+        <a 
+            href="https://linkedin.com/company/yourcompany" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-blue-500 hover:bg-blue-600 text-white transition-colors"
+            aria-label="LinkedIn"
+        >
+            <Linkedin className="size-5" />
+        </a>
+        
+        <a 
+            href="https://x.com/Y80Shivam?t=7BhJ6-L_VSd7HQHB2Xsz6w&s=09" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-sky-500 hover:bg-sky-600 text-white transition-colors"
+            aria-label="Twitter"
+        >
+            <X className="size-5" />
+        </a>
+        
+        <a 
+            href="https://www.instagram.com/shivam05_10?igsh=MThvMGVuemVnMXVydQ==" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-pink-500 hover:bg-pink-600 text-white transition-colors"
+            aria-label="Instagram"
+        >
+            <Instagram className="size-5" />
+        </a>
+        
+
+   <a 
+            href="https://github.com/Shivam10yadav" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="p-2 rounded-full bg-gray-800 hover:bg-gray-900 text-white transition-colors"
+            aria-label="GitHub"
+        >
+            <Github className="size-5" />
+        </a>
+    </div>
+</div>
                 <div>
                     <svg className="text-green-500 bg-green-500/20 p-2.5 aspect-square rounded-full size-10" width="21"
                         height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -48,7 +89,7 @@ const Contactus = () => {
                     <p className="text-lg font-bold mt-2">Call Us Directly</p>
                     <p className="text-gray-500 mt-1 mb-4">Available during working hours.</p>
                     <span className="text-green-600 font-semibold">
-                        (+1) 234 - 4567 - 789
+                        (+1) 9992669056
                     </span>
                 </div>
             </div>
