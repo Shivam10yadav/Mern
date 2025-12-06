@@ -27,6 +27,11 @@ app.use(cors({
 
 
 
+// server.js or app.js
+app.get('/api/health', (req, res) => {
+  res.status(200).json({ status: 'ok', timestamp: new Date() });
+});
+
 app.get('/',(req,res)=>{
   res.send("server is live...")
 })
