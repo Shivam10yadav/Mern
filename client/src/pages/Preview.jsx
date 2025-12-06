@@ -13,7 +13,7 @@ const Preview = () => {
 
   const loadResume=async()=>{
 try {
-      const {data}=await api.get('/api/resumes/public/' +resumeid)
+      const {data}=await api.get('/api/resumes/public/' + resumeid)
     setresumedata(data.resume)
   
 } catch (error) {
