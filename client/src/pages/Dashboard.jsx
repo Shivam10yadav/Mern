@@ -29,7 +29,7 @@ const Dashboard = () => {
     try {
       setPageLoading(true)
       const { data}=await api.get('/api/users/resumes',{headers:{authorization:
-        `bearer ${token}`
+        `Bearer ${token}`
       }})
       setallresumes(data.resumes)
     } catch (error) {
@@ -47,10 +47,14 @@ const Dashboard = () => {
     console.log('🚀 Creating resume...')
     console.log('Token:', token)
     console.log('Title:', title)
+     console.log('🔍 Token from localStorage:', token)
+    console.log('🔍 Token type:', typeof token)
+    console.log('🔍 Token exists:', !!token)
+    console.log('🔍 Authorization header will be:', `Bearer ${token}`)
     
     const {data} = await api.post('/api/resumes/create', {title}, {
       headers: {
-        authorization: `bearer ${token}`
+        authorization: `Bearer ${token}`
       }
     })
     
@@ -125,7 +129,7 @@ const Dashboard = () => {
        event.preventDefault()
         const {data} = await api.put('/api/resumes/update', {resumeid:editresumeid,resumedata:{title}}, {
       headers: {
-        authorization: `bearer ${token}`
+        authorization: `Bearer ${token}`
       }
     })
     setallresumes(allresumes.map(resume=>resume._id===editresumeid?{...resume,title}:resume))
@@ -146,7 +150,7 @@ const Dashboard = () => {
        const confirm=window.confirm("Are you sure you want to delete this resume?")
     if(confirm){
     const {data}=await api.delete(`/api/resumes/delete/${resumeid}`,{headers:{
-      authorization:`bearer ${token}`}})
+      authorization:`Bearer ${token}`}})
       setallresumes(allresumes.filter(resume=>resume._id!==resumeid))
       toast.success(data.message)
     }

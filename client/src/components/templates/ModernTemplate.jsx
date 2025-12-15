@@ -170,9 +170,10 @@ const ModernTemplate = ({ data, accentColor }) => {
                   >
                     <div className="flex justify-between items-start">
                       <div>
-                        <h3 className="text-lg font-medium text-gray-900">
-                          {p.name}
-                        </h3>
+                        <h3 className="text-lg font-medium pr-5">{p.name} <span className="ml-2" style={{ color: accentColor }}>{p.type}</span></h3>
+
+
+                        
                       </div>
                     </div>
                     {p.description && (

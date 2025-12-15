@@ -109,6 +109,10 @@ const ClassicTemplate = ({ data, accentColor }) => {
                             <div key={index} className="flex justify-between items-start border-l-3 border-gray-300 pl-6">
                                 <div>
                                     <li className="font-semibold text-gray-800 ">{proj.name}</li>
+                                     <li className="text-sm mb-1" style={{ color: accentColor }} >
+                                            {proj.type}
+                                        </li>
+
                                     <p className="text-gray-600">{proj.description}</p>
                                 </div>
                             </div>
@@ -145,12 +149,12 @@ const ClassicTemplate = ({ data, accentColor }) => {
 
             {/* Skills */}
             {data.skills && data.skills.length > 0 && (
-                <section className="mb-6">
+                <section className="mb-1">
                     <h2 className="text-xl font-semibold mb-4" style={{ color: accentColor }}>
                         CORE SKILLS
                     </h2>
 
-                    <div className="flex gap-4 flex-wrap">
+                    <div className="flex gap-2 flex-wrap">
                         {data.skills.map((skill, index) => (
                             <div key={index} className="text-gray-700">
                                 • {skill}
