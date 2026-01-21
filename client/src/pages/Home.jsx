@@ -7,7 +7,6 @@ import CallToAction from '../components/CallToAction'
 import Contactus from '../components/Contactus'
 import Footer from '../components/Footer'
 import ScrollAnimation from '../components/ScrollAnimation'  
-import Snowfall from 'react-Snowfall'
 
 
  
