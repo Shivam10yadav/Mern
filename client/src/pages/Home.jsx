@@ -14,22 +14,7 @@ import Snowfall from 'react-Snowfall'
 const Home = () => {
   return (
     <div>
-           <Snowfall 
-     color='blue'
-  snowflakeCount={100
-  } // Much fewer snowflakes
-  speed={[1.0 , 2.0]} // Slower fall speed
-  wind={[-0.5, 0.5]} // Less wind movement
-  radius={[0.5, 1.5]} // Smaller snowflakes
-  style={{
-    position: 'fixed',
-    width: '100vw',
-    height: '100vh',
-    pointerEvents: 'none',
-    zIndex: 1, // Lower z-index so it stays in background
-    opacity: 0.6 // Make it semi-transparent
-  }}
-/>
+          
 
       
        <Banner/>
