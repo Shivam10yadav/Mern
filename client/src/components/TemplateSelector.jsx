@@ -24,6 +24,11 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
       name: "Minimal Image",
       preview: "Minimal design with a single image and clean typography"
     },
+    {
+      id: "professional",
+      name: "Professional",
+      preview: "Compact, single-page format with centered header and categorized sections - perfect for freshers"
+    },
   ]
 
   return (
@@ -37,7 +42,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
       </button>
 
       {isOpen && (
-        <div className="absolute top-full left-0 w-72 p-3 mt-2 space-y-3 z-10 bg-white rounded-md border border-gray-200 shadow-sm">
+        <div className="absolute top-full left-0 w-72 p-3 mt-2 space-y-3 z-10 bg-white rounded-md border border-gray-200 shadow-sm max-h-96 overflow-y-auto">
           {templates.map((template) => (
             <div
               key={template.id}

@@ -3,18 +3,20 @@ import ClassicTemplate from "./templates/ClassicTemplate"
 import ModernTemplate from "./templates/ModernTemplate"
 import MinimalTemplate from "./templates/MinimalTemplate"
 import MinimalImageTemplate from "./templates/MinimalImageTemplate"
+import ProfessionalTemplate from "./templates/ProfessionalTemplate"
 
 const ResumePreview = ({data,template,accentColor,classes=""}) => {
   const renderTemplate=()=>{
     switch(template){
       case "modern":
         return <ModernTemplate data={data} accentColor={accentColor}/>;
-         case "minimal":
+      case "minimal":
         return <MinimalTemplate data={data} accentColor={accentColor}/>;
-              case "minimal-image":
+      case "minimal-image":
         return <MinimalImageTemplate data={data} accentColor={accentColor}/>;
-
-        default:
+      case "professional":
+        return <ProfessionalTemplate data={data} accentColor={accentColor}/>;
+      default:
         return <ClassicTemplate data={data} accentColor={accentColor}/>
     }
   }
@@ -62,4 +64,4 @@ const ResumePreview = ({data,template,accentColor,classes=""}) => {
   )
 }
 
-export default ResumePreview 
+export default ResumePreview
