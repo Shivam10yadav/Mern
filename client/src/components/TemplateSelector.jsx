@@ -1,35 +1,47 @@
-import { Check, Layout } from 'lucide-react'
-import React, { useState } from 'react'
+import { Check, Layout } from "lucide-react";
+import React, { useState } from "react";
 
 const TemplateSelector = ({ selectedTemplate, onChange }) => {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+
   const templates = [
     {
       id: "classic",
       name: "Classic",
-      preview: "A clean, traditional resume format with clear sections and professional typography"
+      preview:
+        "A clean, traditional resume format with clear sections and professional typography",
     },
     {
       id: "modern",
       name: "Modern",
-      preview: "Sleek design with strategic use of color and modern font choices"
+      preview:
+        "Sleek design with strategic use of color and modern font choices",
     },
     {
       id: "minimal",
       name: "Minimal",
-      preview: "Ultra-clean design that puts your content front and center"
+      preview:
+        "Ultra-clean design that puts your content front and center",
     },
     {
       id: "minimal-image",
       name: "Minimal Image",
-      preview: "Minimal design with a single image and clean typography"
+      preview:
+        "Minimal design with a single image and clean typography",
     },
     {
       id: "professional",
       name: "Professional",
-      preview: "Compact, single-page format with centered header and categorized sections - perfect for freshers"
+      preview:
+        "Compact, single-page format with centered header and categorized sections",
     },
-  ]
+    {
+      id: "minimal-two-column",
+      name: "Minimal Two Column",
+      preview:
+        "Clean black & white two-column layout with skill dots and tight spacing – ideal for ATS & freshers",
+    },
+  ];
 
   return (
     <div className="relative">
@@ -47,8 +59,8 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
             <div
               key={template.id}
               onClick={() => {
-                onChange(template.id)
-                setIsOpen(false)
+                onChange(template.id);
+                setIsOpen(false);
               }}
               className={`relative p-3 border rounded-md cursor-pointer transition-all ${
                 selectedTemplate === template.id
@@ -63,8 +75,11 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
                   </div>
                 </div>
               )}
+
               <div className="space-y-1">
-                <h4 className="font-medium text-gray-800">{template.name}</h4>
+                <h4 className="font-medium text-gray-800">
+                  {template.name}
+                </h4>
                 <div className="mt-2 p-2 bg-blue-50 rounded text-xs text-gray-500 italic">
                   {template.preview}
                 </div>
@@ -74,7 +89,7 @@ const TemplateSelector = ({ selectedTemplate, onChange }) => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default TemplateSelector
+export default TemplateSelector;

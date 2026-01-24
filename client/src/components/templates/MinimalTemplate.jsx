@@ -13,9 +13,9 @@ const MinimalTemplate = ({ data, accentColor }) => {
     };
 
     return (
-        <div className="max-w-4xl mx-auto p-8 bg-white text-gray-900 font-light">
+        <div className="max-w-4xl mx-auto p-6 bg-white text-gray-900 text-sm">
             {/* Header */}
-            <header className="mb-10">
+            <header className="mb-1">
                 <h1 className="text-4xl font-light mb-4 tracking-wide">
                     {data.personal_info?.fullname || "Your name"}
                 </h1>
@@ -66,8 +66,8 @@ const MinimalTemplate = ({ data, accentColor }) => {
 
             {/* Professional Summary */}
             {data.professional_summary && (
-                <section className="mb-10">
-                    <p className="text-gray-700">
+                <section className="mb-3">
+                    <p className="text-black">
                         {data.professional_summary}
                     </p>
                 </section>
@@ -75,14 +75,14 @@ const MinimalTemplate = ({ data, accentColor }) => {
 
             {/* Experience */}
             {data.experience && data.experience.length > 0 && (
-                <section className="mb-10">
+                <section className="mb-3">
                     <h2 
-                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        className="text-sm uppercase tracking-widest mb-2 font-medium" 
                         style={{ color: accentColor || '#4F46E5' }}>
                         Experience
                     </h2>
 
-                    <div className="space-y-6">
+                    <div className="space-y-2">
                         {data.experience.map((exp, index) => (
                             <div key={index}>
                                 <div className="flex justify-between items-baseline mb-1">
@@ -91,7 +91,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
                                         {formatDate(exp.start_date)} - {exp.is_current ? "Present" : formatDate(exp.end_date)}
                                     </span>
                                 </div>
-                                <p className="text-gray-600 mb-2">{exp.company}</p>
+                                <p className="text-black-600 mb-2">{exp.company}</p>
                                 {exp.description && (
                                     <div className="text-gray-700 leading-relaxed whitespace-pre-line">
                                         {exp.description}
@@ -105,14 +105,14 @@ const MinimalTemplate = ({ data, accentColor }) => {
 
             {/* Projects */}
             {data.project && data.project.length > 0 && (
-                <section className="mb-10">
+                <section className="mb-3">
                     <h2 
-                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        className="text-sm uppercase tracking-widest mb-2 font-medium" 
                         style={{ color: accentColor || '#4F46E5' }}>
                         Projects
                     </h2>
 
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                         {data.project.map((proj, index) => (
                             <div key={index} className="flex flex-col gap-2 justify-between items-baseline">
                                <h3 className="text-lg font-medium pr-5">{proj.name} <span className="ml-2">{proj.type}</span></h3>
@@ -126,14 +126,14 @@ const MinimalTemplate = ({ data, accentColor }) => {
 
             {/* Education */}
             {data.education && data.education.length > 0 && (
-                <section className="mb-10">
+                <section className="mb-3">
                     <h2 
-                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        className="text-sm uppercase tracking-widest mb-3 font-medium" 
                         style={{ color: accentColor || '#4F46E5' }}>
                         Education
                     </h2>
 
-                    <div className="space-y-4">
+                    <div className="space-y-2">
                         {data.education.map((edu, index) => (
                             <div key={index} className="flex justify-between items-baseline">
                                 <div>
@@ -156,7 +156,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {data.skills && data.skills.length > 0 && (
                 <section>
                     <h2 
-                        className="text-sm uppercase tracking-widest mb-6 font-medium" 
+                        className="text-sm uppercase tracking-widest mb-3 font-medium" 
                         style={{ color: accentColor || '#4F46E5' }}>
                         Skills
                     </h2>

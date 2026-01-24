@@ -66,7 +66,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
 
       {/* Profile */}
       {data.professional_summary && (
-        <section className="mb-5">
+        <section className="mb-2">
           <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Profile
           </h2>
@@ -76,7 +76,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
 
       {/* Skills */}
       {data.skills?.length > 0 && (
-        <section className="mb-5">
+        <section className="mb-2">
           <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Technical Skills
           </h2>
@@ -89,7 +89,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
 
       {/* Experience */}
       {data.experience?.length > 0 && (
-        <section className="mb-5">
+        <section className="mb-2">
           <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Experience
           </h2>
@@ -126,7 +126,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
 
       {/* Projects */}
       {data.project?.length > 0 && (
-        <section className="mb-5">
+        <section className="mb-2">
           <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Projects
           </h2>
