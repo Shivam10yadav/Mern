@@ -54,7 +54,13 @@ const ModernTemplate = ({ data, accentColor }) => {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-[12px]">
             {data.personal_info?.email && (
               <div className="flex items-center gap-1.5">
-                <Mail className="size-3.5" />
+                       <Mail className="size-4 flex-shrink-0 mt-0.5" />
+                       <a 
+                           href={`mailto:${data.personal_info.email}`}
+                           className="break-all text-xs leading-relaxed text-white hover:text-black hover:underline"
+                       >
+                           {data.personal_info.email}
+                       </a>
                 <span>{data.personal_info.email}</span>
               </div>
             )}

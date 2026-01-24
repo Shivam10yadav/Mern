@@ -1,7 +1,7 @@
 import React from "react";
 import { Mail, Phone, Linkedin, Globe } from "lucide-react";
 
-const ProfessionalTemplate = ({ data }) => {
+const ProfessionalTemplate = ({ data, accentColor }) => {
   const formatDate = (dateStr) => {
     if (!dateStr) return "";
     const [year, month] = dateStr.split("-");
@@ -14,11 +14,11 @@ const ProfessionalTemplate = ({ data }) => {
   return (
     <div className="w-full bg-white text-gray-900 p-9 text-[13px] leading-normal">
       {/* Header */}
-      <div className="text-center mb-5 border-b border-gray-900 pb-4">
-        <h1 className="text-[34px] font-bold uppercase tracking-wide mb-1">
+      <div className="text-center mb-3 pb-2" style={{ borderBottom: `1px solid ${accentColor}` }}>
+        <h1 className="text-[34px] font-bold uppercase tracking-wide ">
           {data.personal_info?.fullname || "Your Name"}
         </h1>
-        <p className="text-sm text-gray-600 mb-3">
+        <p className="text-sm text-gray-600 mb-1">
           {data.personal_info?.location}
         </p>
 
@@ -31,8 +31,13 @@ const ProfessionalTemplate = ({ data }) => {
           )}
           {data.personal_info?.email && (
             <div className="flex items-center gap-1">
-              <Mail className="size-4" />
-              <span>{data.personal_info.email}</span>
+              <Mail className="size-4 flex-shrink-0 mt-0.5" />
+              <a 
+                href={`mailto:${data.personal_info.email}`}
+                className="break-all text-xs leading-relaxed text-black hover:text-black hover:underline"
+              >
+                {data.personal_info.email}
+              </a>
             </div>
           )}
           {data.personal_info?.linkedin && (
@@ -48,21 +53,21 @@ const ProfessionalTemplate = ({ data }) => {
               </div>
             </a>
           )}
-         {data.personal_info?.website && (
-              <a href={data.personal_info.website} className="flex items-center gap-1.5">
-                <Globe className="size-3.5" />
-                <span className="break-all">
-                  {data.personal_info.website.replace("https://", "")}
-                </span>
-              </a>
-            )}
+          {data.personal_info?.website && (
+            <a href={data.personal_info.website} className="flex items-center gap-1.5">
+              <Globe className="size-3.5" />
+              <span className="break-all">
+                {data.personal_info.website.replace("https://", "")}
+              </span>
+            </a>
+          )}
         </div>
       </div>
 
       {/* Profile */}
       {data.professional_summary && (
         <section className="mb-5">
-          <h2 className="text-[16px] font-bold uppercase border-b border-gray-900 mb-2">
+          <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Profile
           </h2>
           <p className="text-justify">{data.professional_summary}</p>
@@ -72,7 +77,7 @@ const ProfessionalTemplate = ({ data }) => {
       {/* Skills */}
       {data.skills?.length > 0 && (
         <section className="mb-5">
-          <h2 className="text-[16px] font-bold uppercase border-b border-gray-900 mb-2">
+          <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Technical Skills
           </h2>
           <p>
@@ -85,7 +90,7 @@ const ProfessionalTemplate = ({ data }) => {
       {/* Experience */}
       {data.experience?.length > 0 && (
         <section className="mb-5">
-          <h2 className="text-[16px] font-bold uppercase border-b border-gray-900 mb-2">
+          <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Experience
           </h2>
 
@@ -122,7 +127,7 @@ const ProfessionalTemplate = ({ data }) => {
       {/* Projects */}
       {data.project?.length > 0 && (
         <section className="mb-5">
-          <h2 className="text-[16px] font-bold uppercase border-b border-gray-900 mb-2">
+          <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Projects
           </h2>
 
@@ -153,7 +158,7 @@ const ProfessionalTemplate = ({ data }) => {
       {/* Education */}
       {data.education?.length > 0 && (
         <section>
-          <h2 className="text-[16px] font-bold uppercase border-b border-gray-900 mb-2">
+          <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Education
           </h2>
 

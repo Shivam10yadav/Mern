@@ -31,12 +31,17 @@ const ClassicTemplate = ({ data, accentColor }) => {
                     {/* Contact Info */}
                     <div className="mb-8 space-y-3 text-sm">
                         <h3 className="text-base font-bold mb-4 uppercase tracking-wide border-b pb-2 border-white/30">Contact</h3>
-                        {data.personal_info?.email && (
-                            <div className="flex items-start gap-2">
-                                <Mail className="size-4 flex-shrink-0 mt-0.5" />
-                                <span className="break-all text-xs leading-relaxed">{data.personal_info.email}</span>
-                            </div>
-                        )}
+                      {data.personal_info?.email && (
+    <div className="flex items-start gap-2">
+        <Mail className="size-4 flex-shrink-0 mt-0.5" />
+        <a 
+            href={`mailto:${data.personal_info.email}`}
+            className="break-all text-xs leading-relaxed text-white hover:text-black hover:underline"
+        >
+            {data.personal_info.email}
+        </a>
+    </div>
+)}
                         {data.personal_info?.phone && (
                             <div className="flex items-center gap-2">
                                 <Phone className="size-4 flex-shrink-0" />
@@ -55,12 +60,14 @@ const ClassicTemplate = ({ data, accentColor }) => {
                                 <span className="break-all text-xs leading-relaxed">{data.personal_info.linkedin}</span>
                             </div>
                         )}
-                        {data.personal_info?.website && (
-                            <div className="flex items-start gap-2">
-                                <Globe className="size-4 flex-shrink-0 mt-0.5" />
-                                <span className="break-all text-xs leading-relaxed">{data.personal_info.website}</span>
-                            </div>
-                        )}
+                                     {data.personal_info?.website && (
+              <a href={data.personal_info.website} className="flex items-center gap-1.5">
+                <Globe className="size-3.5" />
+                <span className="break-all">
+                  {data.personal_info.website.replace("https://", "")}
+                </span>
+              </a>
+                 )}
                     </div>
 
                     {/* Skills */}

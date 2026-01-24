@@ -1,4 +1,4 @@
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone, MapPin,Globe, Linkedin, } from "lucide-react";
 
 const MinimalImageTemplate = ({ data, accentColor }) => {
     const formatDate = (dateStr) => {
@@ -57,8 +57,13 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                             )}
                             {data.personal_info?.email && (
                                 <div className="flex items-center gap-2">
-                                    <Mail size={14} style={{ color: accentColor }} />
-                                    <span>{data.personal_info.email}</span>
+                       <Mail className="size-4 flex-shrink-0 mt-0.5" />
+                       <a 
+                           href={`mailto:${data.personal_info.email}`}
+                           className="break-all text-xs leading-relaxed text-black hover:text-black hover:underline"
+                       >
+                           {data.personal_info.email}
+                       </a>
                                 </div>
                             )}
                             {data.personal_info?.location && (
@@ -67,6 +72,23 @@ const MinimalImageTemplate = ({ data, accentColor }) => {
                                     <span>{data.personal_info.location}</span>
                                 </div>
                             )}
+
+                             {data.personal_info?.linkedin && (
+              <a href={data.personal_info.linkedin} className="flex items-center gap-1.5">
+                <Linkedin className="size-3.5" />
+                <span className="break-all">
+                  {data.personal_info.linkedin.replace("https://www.", "")}
+                </span>
+              </a>
+            )}
+                 {data.personal_info?.website && (
+              <a href={data.personal_info.website} className="flex items-center gap-1.5">
+                <Globe className="size-3.5" />
+                <span className="break-all">
+                  {data.personal_info.website.replace("https://", "")}
+                </span>
+              </a>
+                 )}
                         </div>
                     </section>
 

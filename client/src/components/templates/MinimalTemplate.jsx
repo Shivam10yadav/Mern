@@ -1,3 +1,5 @@
+import { Globe, Linkedin, Mail, MapPin, Phone } from "lucide-react";
+
 const MinimalTemplate = ({ data, accentColor }) => {
      console.log('🎨 MinimalTemplate - Accent Color:', accentColor);
     console.log('🎨 MinimalTemplate - Type:', typeof accentColor);
@@ -18,17 +20,48 @@ const MinimalTemplate = ({ data, accentColor }) => {
                     {data.personal_info?.fullname || "Your name"}
                 </h1>
 
-                <div className="flex flex-wrap gap-6 text-sm text-gray-600">
-                    {data.personal_info?.email && <span>{data.personal_info.email}</span>}
-                    {data.personal_info?.phone && <span>{data.personal_info.phone}</span>}
-                    {data.personal_info?.location && <span>{data.personal_info.location}</span>}
-                    {data.personal_info?.linkedin && (
-                        <span className="break-all">{data.personal_info.linkedin}</span>
-                    )}
-                    {data.personal_info?.website && (
-                        <span className="break-all">{data.personal_info.website}</span>
-                    )}
-                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-[12px]">
+            {data.personal_info?.email && (
+              <div className="flex items-center gap-1.5">
+                       <Mail className="size-4 flex-shrink-0 mt-0.5" />
+                       <a 
+                           href={`mailto:${data.personal_info.email}`}
+                           className="break-all text-xs leading-relaxed text-black hover:text-black hover:underline"
+                       >
+                           {data.personal_info.email}
+                       </a>
+               
+              </div>
+            )}
+            {data.personal_info?.phone && (
+              <div className="flex items-center gap-1.5">
+                <Phone className="size-3.5" />
+                <span>{data.personal_info.phone}</span>
+              </div>
+            )}
+            {data.personal_info?.location && (
+              <div className="flex items-center gap-1.5">
+                <MapPin className="size-3.5" />
+                <span>{data.personal_info.location}</span>
+              </div>
+            )}
+            {data.personal_info?.linkedin && (
+              <a href={data.personal_info.linkedin} className="flex items-center gap-1.5">
+                <Linkedin className="size-3.5" />
+                <span className="break-all">
+                  {data.personal_info.linkedin.replace("https://www.", "")}
+                </span>
+              </a>
+            )}
+            {data.personal_info?.website && (
+              <a href={data.personal_info.website} className="flex items-center gap-1.5">
+                <Globe className="size-3.5" />
+                <span className="break-all">
+                  {data.personal_info.website.replace("https://", "")}
+                </span>
+              </a>
+            )}
+          </div>
             </header>
 
             {/* Professional Summary */}
