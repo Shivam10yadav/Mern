@@ -70,7 +70,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
           <h2 className="text-[16px] font-bold uppercase mb-2" style={{ borderBottom: `1px solid ${accentColor}`, paddingBottom: '0.5rem' }}>
             Profile
           </h2>
-          <p className="text-justify">{data.professional_summary}</p>
+          <p className="text-justify wrap-break-word">{data.professional_summary}</p>
         </section>
       )}
 
@@ -108,7 +108,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
                   </span>
                 </div>
 
-                <ul className="list-disc list-inside ml-3 mt-1 space-y-1">
+                <ul className="list-disc list-inside ml-3 mt-1 space-y-1 wrap-break-word">
                   {exp.description
                     ?.split("\n")
                     .map(
@@ -139,7 +139,7 @@ const ProfessionalTemplate = ({ data, accentColor }) => {
                   <span className="text-gray-600">{proj.type}</span>
                 </div>
 
-                <ul className="list-disc list-inside ml-3 mt-1 space-y-1">
+                <ul className="list-disc list-inside ml-3 mt-1 space-y-1 wrap-break-word">
                   {proj.description
                     .split("\n")
                     .map(

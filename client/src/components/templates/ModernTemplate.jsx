@@ -39,8 +39,8 @@ const ModernTemplate = ({ data, accentColor }) => {
       <div className="max-w-4xl mx-auto bg-white text-gray-800 text-[13px] leading-snug">
 
         {/* Header */}
-        <header className=" text-white resume-header p-10" style={{ backgroundColor: accentColor }}>
-          <h1 className="text-[30px] font-light mb-1 ">
+        <header className=" text-white resume-header p-8" style={{ backgroundColor: accentColor }}>
+          <h1 className="text-[30px] font-light  ">
             {data.personal_info.fullname || "Your Name"}
           </h1>
 
@@ -61,7 +61,7 @@ const ModernTemplate = ({ data, accentColor }) => {
                        >
                            {data.personal_info.email}
                        </a>
-                <span>{data.personal_info.email}</span>
+                
               </div>
             )}
             {data.personal_info?.phone && (
@@ -95,15 +95,15 @@ const ModernTemplate = ({ data, accentColor }) => {
           </div>
         </header>
 
-        <div className="p-6">
+        <div className="p-5">
 
           {/* Summary */}
           {data.professional_summary && (
-            <section className="mb-6">
+            <section className="mb-2">
               <h2 className="text-[17px] font-light mb-2 pb-1 border-b border-gray-200">
                 Professional Summary
               </h2>
-              <p className="leading-snug">
+              <p className="leading-snug wrap-break-word">
                 {data.professional_summary}
               </p>
             </section>
@@ -111,12 +111,12 @@ const ModernTemplate = ({ data, accentColor }) => {
 
           {/* Experience */}
           {data.experience?.length > 0 && (
-            <section className="mb-6">
+            <section className="mb-2">
               <h2 className="text-[17px] font-light mb-3 pb-1 border-b border-gray-200">
                 Experience
               </h2>
 
-              <div className="space-y-3">
+              <div className="space-y-2">
                 {data.experience.map((exp, index) => (
                   <div key={index} className="pl-4 border-l border-gray-200">
                     <div className="flex justify-between items-start mb-0.5">
@@ -133,7 +133,7 @@ const ModernTemplate = ({ data, accentColor }) => {
                       </span>
                     </div>
                     {exp.description && (
-                      <p className="text-[12px] leading-snug mt-1 whitespace-pre-line">
+                      <p className="text-[12px] leading-snug mt-1 whitespace-pre-line wrap-break-word">
                         {exp.description}
                       </p>
                     )}
@@ -145,7 +145,7 @@ const ModernTemplate = ({ data, accentColor }) => {
 
           {/* Projects */}
           {data.project?.length > 0 && (
-            <section className="mb-6">
+            <section className="mb-2">
               <h2 className="text-[17px] font-light mb-2 pb-1 border-b border-gray-200">
                 Projects
               </h2>
@@ -160,7 +160,7 @@ const ModernTemplate = ({ data, accentColor }) => {
                       </span>
                     </h3>
                     {p.description && (
-                      <p className="text-[12px] leading-snug mt-1">
+                      <p className="text-[12px] leading-snug mt-1 wrap-break-word">
                         {p.description}
                       </p>
                     )}
@@ -178,7 +178,7 @@ const ModernTemplate = ({ data, accentColor }) => {
                 <h2 className="text-[17px] font-light mb-2 pb-1 border-b border-gray-200">
                   Education
                 </h2>
-                <div className="space-y-2">
+                <div className="space-y-3">
                   {data.education.map((edu, index) => (
                     <div key={index}>
                       <p className="font-semibold text-[13px]">

@@ -67,7 +67,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
             {/* Professional Summary */}
             {data.professional_summary && (
                 <section className="mb-3">
-                    <p className="text-black">
+                    <p className="text-black wrap-break-word">
                         {data.professional_summary}
                     </p>
                 </section>
@@ -93,7 +93,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
                                 </div>
                                 <p className="text-black-600 mb-2">{exp.company}</p>
                                 {exp.description && (
-                                    <div className="text-gray-700 leading-relaxed whitespace-pre-line">
+                                    <div className="text-gray-700 leading-relaxed whitespace-pre-line wrap-break-word">
                                         {exp.description}
                                     </div>
                                 )}
@@ -117,7 +117,7 @@ const MinimalTemplate = ({ data, accentColor }) => {
                             <div key={index} className="flex flex-col gap-2 justify-between items-baseline">
                                <h3 className="text-lg font-medium pr-5">{proj.name} <span className="ml-2">{proj.type}</span></h3>
                                  
-                                <p className="text-gray-600">{proj.description}</p>
+                                <p className="text-gray-600 wrap-break-word">{proj.description}</p>
                             </div>
                         ))}
                     </div>

@@ -87,7 +87,7 @@ const MinimalTwoColumnTemplate = ({ data }) => {
           {/* PROFESSIONAL SUMMARY */}
           {data.professional_summary && (
             <Section title="Professional Summary">
-              <p className="text-gray-700 text-justify">
+              <p className="text-gray-700 text-justify wrap-break-word">
                 {data.professional_summary}
               </p>
             </Section>
@@ -105,7 +105,7 @@ const MinimalTwoColumnTemplate = ({ data }) => {
                     {formatDate(exp.start_date)} –{" "}
                     {exp.is_current ? "Present" : formatDate(exp.end_date)}
                   </p>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 wrap-break-word">
                     {exp.description}
                   </p>
                 </div>
@@ -126,7 +126,7 @@ const MinimalTwoColumnTemplate = ({ data }) => {
                       </span>
                     )}
                   </p>
-                  <p className="text-gray-700">
+                  <p className="text-gray-700 wrap-break-word">
                     {proj.description}
                   </p>
                 </div>
